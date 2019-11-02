@@ -2,6 +2,9 @@ import logging
 
 from app.config_common import *
 
+# HOST = 0.0.0.0 means that it goes online.
+HOST = '0.0.0.0'
+PORT = 8080
 
 # DEBUG has to be to False in a production environment for security reasons
 DEBUG = False
