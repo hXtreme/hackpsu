@@ -1,5 +1,5 @@
-from twitter_stream import MyStreamListener
 import tweepy
+from twitter_stream import MyStreamListener
 
 
 def oauth_authenticate():
