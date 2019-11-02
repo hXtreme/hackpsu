@@ -8,7 +8,7 @@ api = tweepy.API(auth)
 myStreamListener = MyStreamListener()
 myStream = tweepy.Stream(auth=api.auth, listener=myStreamListener)
 
-myStream.filter(track=['#HACKPSUHELPLINE'])
+myStream.filter(track=["#HACKPSUHELPLINE"])
 
 # for temp in tweepy.Cursor(api.search, q="#HACKPSUHELPLINE", ang="en").items():
 #     print(temp)
