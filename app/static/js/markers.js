@@ -13,6 +13,41 @@ function placeMarker(map, person) {
             map: map
           });
 
+      var infowindow = getInfoWindow(person);
+
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
+
+}
+
+function getInfoWindow(person) {
+    var content = '<div class="infowindow">'+
+              '<p>'+
+              person.first_name +" "+ person.last_name +"<br>"+
+              person.phone +" "+ person.email +"<br>"+
+              '</p>'
+              '</div>';
+    if(person.type == 'requester')
+    {
+          var content = '<div class="infowindow">'+
+              '<p>'+
+              person.username +
+              '</p>' +
+              '<p>' +
+               person.message +
+              '</p>' +
+              '<button onclick="respond()">Respond!</button>'+
+              '</div>';
+    }
+  var infowindow = new google.maps.InfoWindow({content: content});
+  return infowindow;
+}
+
+function respond() {
+
+
+
 }
 
 
