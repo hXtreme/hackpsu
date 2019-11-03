@@ -1,7 +1,8 @@
 from flask.ext.script import Manager, prompt_bool, Shell, Server
 from termcolor import colored
-
+from app.TwitterWorker import *
 from app import app, db, models
+import sys
 
 
 manager = Manager(app)
@@ -29,5 +30,11 @@ def dropdb():
 manager.add_command('runserver', Server())
 manager.add_command('shell', Shell(make_context=make_shell_context))
 
+twitter_allowed = ['runserver']
+
 if __name__ == '__main__':
-    manager.run()
+    if len(sys.argv) > 1:
+        if sys.argv[1] in twitter_allowed:
+            worker = TwitterWorker()
+            worker.start()
+        manager.run()
