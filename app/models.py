@@ -15,6 +15,7 @@ class Requesters(db.Model, UserMixin):
     lng = db.Column(db.Float)
     message = db.Column(db.String)
     radius = db.Column(db.Float)
+    matched = db.Column(db.String)
 
 
 class Responder(db.Model, UserMixin):
