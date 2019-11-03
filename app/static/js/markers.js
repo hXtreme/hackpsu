@@ -1,13 +1,15 @@
 function placeMarker(map, person) {
-
   var icon_person = '<i class="fas fa-user-md"></i>';
 
-  if (person.type == 'requester') {
+  if (person.type == "requester") {
     icon_person = '<i class="fas fa-star-of-life"></i>';
   }
 
-  var marker = new google.maps.Marker(
-      {position : person.position, icon : icon_person, map : map});
+  var marker = new google.maps.Marker({
+    position: person.position,
+    icon: icon_person,
+    map: map
+  });
 }
 
 function clearMarkers() {
