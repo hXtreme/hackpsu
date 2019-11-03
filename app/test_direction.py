@@ -1,4 +1,3 @@
-
 # Copyright 2014 Google Inc. All rights reserved.
 #
 #
@@ -275,35 +274,42 @@ import googlemaps
 
 
 def setUp():
-    key = 'AIzaSyBKRd5kn3yHGCja-ao7mQcmwHBbvdgvyTM'
+    key = "AIzaSyBKRd5kn3yHGCja-ao7mQcmwHBbvdgvyTM"
     client = googlemaps.Client(key)
     return [key, client]
 
 
 def test_simple_directions(client):
-    responses.add(responses.GET,
-                  'https://maps.googleapis.com/maps/api/directions/json',
-                  body='{"status":"OK","routes":[]}',
-                  status=200,
-                  content_type='application/json')
+    responses.add(
+        responses.GET,
+        "https://maps.googleapis.com/maps/api/directions/json",
+        body='{"status":"OK","routes":[]}',
+        status=200,
+        content_type="application/json",
+    )
 
     routes = client.directions("Sydney", "Melbourne")
 
 
 def test_toledo_to_madrid_in_spain(key, client):
-    responses.add(responses.GET,
-                  'https://maps.googleapis.com/maps/api/directions/json',
-                  body='{"status":"OK","routes":[]}',
-                  status=200,
-                  content_type='application/json')
+    responses.add(
+        responses.GET,
+        "https://maps.googleapis.com/maps/api/directions/json",
+        body='{"status":"OK","routes":[]}',
+        status=200,
+        content_type="application/json",
+    )
 
-    routes = client.directions({'lat': 40.7880091, 'lng': -77.8875909}, {'lat': 39.9474613, 'lng': -75.1222836},
-                               region="en")
+    routes = client.directions(
+        {"lat": 40.7880091, "lng": -77.8875909},
+        {"lat": 39.9474613, "lng": -75.1222836},
+        region="en",
+    )
 
     print(routes)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     [key, client] = setUp()
     print(key)
     test_toledo_to_madrid_in_spain(key, client)

@@ -4,13 +4,12 @@ from app import models, db
 
 
 class MyStreamListener(tweepy.StreamListener):
-
     def on_status(self, status):
         if status.place.bounding_box.coordinates != None:
             temp = status.place.bounding_box.coordinates
             np_temp = np.array(temp)
             np_avg = np.average(np_temp, axis=1)
-            t_avg_coords = np.reshape(np_avg, (2, ))
+            t_avg_coords = np.reshape(np_avg, (2,))
             t_lat = t_avg_coords[0]
             t_lng = t_avg_coords[1]
         t_username = status.user.screen_name
@@ -27,7 +26,7 @@ class MyStreamListener(tweepy.StreamListener):
                 lat=t_lat,
                 lng=t_lng,
                 message=t_message,
-                radius=t_radius
+                radius=t_radius,
             )
             # Insert the user in the database
             db.session.add(requester)

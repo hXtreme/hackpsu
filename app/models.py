@@ -6,9 +6,9 @@ from app import db, bcrypt
 
 class Requesters(db.Model, UserMixin):
 
-    ''' A requester who needs help '''
+    """ A requester who needs help """
 
-    __tablename__ = 'requesters'
+    __tablename__ = "requesters"
 
     username = db.Column(db.String, primary_key=True)
     lat = db.Column(db.Float)
@@ -19,9 +19,9 @@ class Requesters(db.Model, UserMixin):
 
 class Responder(db.Model, UserMixin):
 
-    ''' A responder who has an account on the website. '''
+    """ A responder who has an account on the website. """
 
-    __tablename__ = 'responders'
+    __tablename__ = "responders"
 
     first_name = db.Column(db.String)
     last_name = db.Column(db.String)
@@ -32,7 +32,7 @@ class Responder(db.Model, UserMixin):
 
     @property
     def full_name(self):
-        return '{} {}'.format(self.first_name, self.last_name)
+        return "{} {}".format(self.first_name, self.last_name)
 
     @hybrid_property
     def password(self):
@@ -43,7 +43,7 @@ class Responder(db.Model, UserMixin):
         self._password = bcrypt.generate_password_hash(plaintext)
 
     def check_password(self, plaintext):
-        return (self.password == plaintext)
+        return self.password == plaintext
 
     def get_id(self):
         return self.email
