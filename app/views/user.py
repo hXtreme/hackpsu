@@ -18,7 +18,7 @@ def signup():
     form = user_forms.SignUp()
     if form.validate_on_submit():
         # Create a user who hasn't validated his email address
-        user = models.User(
+        user = models.Responder(
             first_name=form.first_name.data,
             last_name=form.last_name.data,
             phone=form.phone.data,
@@ -54,7 +54,7 @@ def confirm(token):
     except:
         abort(404)
     # Get the user from the database
-    user = models.User.query.filter_by(email=email).first()
+    user = models.Responder.query.filter_by(email=email).first()
     # The user has confirmed his or her email address
     user.confirmation = True
     # Update the database with the user
@@ -69,12 +69,12 @@ def confirm(token):
 def signin():
     form = user_forms.Login()
     if form.validate_on_submit():
-        user = models.User.query.filter_by(email=form.email.data).first()
+        responder = models.Responder.query.filter_by(email=form.email.data).first()
         # Check the user exists
-        if user is not None:
+        if responder is not None:
             # Check the password is correct
-            if user.check_password(form.password.data):
-                login_user(user)
+            if responder.check_password(form.password.data):
+                login_user(responder)
                 # Send back to the home page
                 flash('Succesfully signed in.', 'positive')
                 return redirect(url_for('index'))
@@ -104,19 +104,19 @@ def account():
 def forgot():
     form = user_forms.Forgot()
     if form.validate_on_submit():
-        user = models.User.query.filter_by(email=form.email.data).first()
+        responder = models.Responder.query.filter_by(email=form.email.data).first()
         # Check the user exists
-        if user is not None:
+        if responder is not None:
             # Subject of the confirmation email
             subject = 'Reset your password.'
             # Generate a random token
-            token = ts.dumps(user.email, salt='password-reset-key')
+            token = ts.dumps(responder.email, salt='password-reset-key')
             # Build a reset link with token
             resetUrl = url_for('userbp.reset', token=token, _external=True)
             # Render an HTML template to send by email
             html = render_template('email/reset.html', reset_url=resetUrl)
             # Send the email to user
-            email.send(user.email, subject, html)
+            email.send(responder.email, subject, html)
             # Send back to the home page
             flash('Check your emails to reset your password.', 'positive')
             return redirect(url_for('index'))
@@ -135,10 +135,10 @@ def reset(token):
         abort(404)
     form = user_forms.Reset()
     if form.validate_on_submit():
-        user = models.User.query.filter_by(email=email).first()
+        responder = models.Responder.query.filter_by(email=email).first()
         # Check the user exists
-        if user is not None:
-            user.password = form.password.data
+        if responder is not None:
+            responder.password = form.password.data
             # Update the database with the user
             db.session.commit()
             # Send to the signin page
