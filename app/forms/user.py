@@ -2,7 +2,7 @@ from flask.ext.wtf import Form
 from wtforms import TextField, PasswordField
 from wtforms.validators import (Required, Length, Email, ValidationError,
                                 EqualTo)
-from app.models import User
+from app.models import Responder
 
 
 class Unique(object):
@@ -67,7 +67,7 @@ class SignUp(Form):
     phone = TextField(validators=[Required(), Length(min=6)],
                       description='Phone number')
     email = TextField(validators=[Required(), Email(),
-                                  Unique(User, User.email,
+                                  Unique(Responder, Responder.email,
                                          'This email address is ' +
                                          'already linked to an account.')],
                       description='Email address')

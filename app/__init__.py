@@ -32,7 +32,7 @@ app.register_blueprint(user.userbp)
 
 # Setup the user login process
 from flask.ext.login import LoginManager
-from app.models import User
+from app.models import Responder
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -41,6 +41,6 @@ login_manager.login_view = 'userbp.signin'
 
 @login_manager.user_loader
 def load_user(email):
-    return User.query.filter(User.email == email).first()
+    return Responder.query.filter(Responder.email == email).first()
 
 from app import admin
