@@ -5,7 +5,6 @@ from app import db, bcrypt
 
 
 class Requesters(db.Model, UserMixin):
-
     ''' A requester who needs help '''
 
     __tablename__ = 'requesters'
@@ -17,9 +16,15 @@ class Requesters(db.Model, UserMixin):
     radius = db.Column(db.Float)
     matched = db.Column(db.String)
 
+    def __dict__(self):
+        return {'username': self.username,
+                    'lat': self.lat, 'lng': self.lng,
+                    'message': self.message,
+                    'radius': self.radius,
+                    'matched': self.matched}
+
 
 class Responder(db.Model, UserMixin):
-
     ''' A responder who has an account on the website. '''
 
     __tablename__ = 'responders'

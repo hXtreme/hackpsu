@@ -1,5 +1,8 @@
 {% extends "map.html" %}
 
 {% block map_mod %}
-    Hello
+    <script type="text/javascript">
+        var trafficLayer = new google.maps.TrafficLayer();
+        trafficLayer.setMap(map);
+    </script>
 {% endblock %}
