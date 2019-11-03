@@ -50,7 +50,7 @@
    		<!-- Message flashing -->
 		{% with messages = get_flashed_messages(with_categories=true) %}
 		  	{% if messages %}
-		    	<ul>
+		    	<ul id="messages">
 		    		{% for category, message in messages %}
 		      			<li class="ui {{ category }} message flash">{{ message }}</li>
 		    		{% endfor %}
@@ -60,17 +60,5 @@
    		<div id="body" class="body">
    			{% block content %}{% endblock %}
    		</div>
-		<div id="footer">
-			<div class="ui divider"></div>
-	    		<div class="ui divided horizontal footer link list">
-			      	<div class="item">
-			        	Max Halford
-			      	</div>
-			      	<div class="item">
-			        	<a href="https://github.com/MaxHalford"><i class="github icon"></i></a>
-			      	</div>
-	    		</div>
-	  		</div>
-		</div>
 	</body>
 </html>
