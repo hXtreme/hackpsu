@@ -15,8 +15,15 @@ body {
 }
 
 #body {
-   margin: 20px;
-   min-height: 100%;
+   margin: 0px;
+   max-height: 100%;
+}
+
+#messages {
+   position: absolute;
+   left: 10px;
+   bottom: 20px;
+   z-index: 1;
 }
 
 #footer {

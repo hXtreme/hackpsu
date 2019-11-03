@@ -127,3 +127,4 @@ dmypy.json
 
 # Pycharm
 /.idea
+app/app.db
