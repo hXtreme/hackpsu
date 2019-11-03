@@ -6,7 +6,6 @@ from app import db
 
 
 class Requesters(db.Model, UserMixin):
-
     """ A requester who needs help """
 
     __tablename__ = "requesters"
@@ -19,7 +18,6 @@ class Requesters(db.Model, UserMixin):
 
 
 class Responder(db.Model, UserMixin):
-
     """ A responder who has an account on the website. """
 
     __tablename__ = "responders"

@@ -21,7 +21,6 @@ from datetime import timedelta
 import googlemaps
 import responses
 
-
 # class DirectionsTest(_test.TestCase):
 
 #   def setUp(self):
@@ -298,8 +297,14 @@ def test_toledo_to_madrid_in_spain(key, client):
     )
 
     routes = client.directions(
-        {"lat": 40.7880091, "lng": -77.8875909},
-        {"lat": 39.9474613, "lng": -75.1222836},
+        {
+            "lat": 40.7880091,
+            "lng": -77.8875909
+        },
+        {
+            "lat": 39.9474613,
+            "lng": -75.1222836
+        },
         region="en",
     )
 

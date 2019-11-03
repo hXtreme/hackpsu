@@ -18,7 +18,8 @@ class TwitterWorker(Thread):
 
     def run(self):
         streamListener = MyStreamListener()
-        self.stream = tweepy.Stream(auth=self.api.auth, listener=streamListener)
+        self.stream = tweepy.Stream(auth=self.api.auth,
+                                    listener=streamListener)
         self.stream.filter(track=["#HACKPSUHELPLINE"])
 
 

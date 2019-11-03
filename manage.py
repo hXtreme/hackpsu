@@ -11,7 +11,6 @@ from app import db
 from app import models
 from twitter.TwitterWorker import *
 
-
 manager = Manager(app)
 
 

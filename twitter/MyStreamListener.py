@@ -11,7 +11,7 @@ class MyStreamListener(tweepy.StreamListener):
             temp = status.place.bounding_box.coordinates
             np_temp = np.array(temp)
             np_avg = np.average(np_temp, axis=1)
-            t_avg_coords = np.reshape(np_avg, (2,))
+            t_avg_coords = np.reshape(np_avg, (2, ))
             t_lat = t_avg_coords[0]
             t_lng = t_avg_coords[1]
         t_username = status.user.screen_name
