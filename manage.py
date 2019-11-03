@@ -1,8 +1,15 @@
-from flask.ext.script import Manager, prompt_bool, Shell, Server
-from termcolor import colored
-from twitter.TwitterWorker import *
-from app import app, db, models
 import sys
+
+from flask.ext.script import Manager
+from flask.ext.script import prompt_bool
+from flask.ext.script import Server
+from flask.ext.script import Shell
+from termcolor import colored
+
+from app import app
+from app import db
+from app import models
+from twitter.TwitterWorker import *
 
 
 manager = Manager(app)

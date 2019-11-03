@@ -1,6 +1,8 @@
-import tweepy
 import numpy as np
-from app import models, db
+import tweepy
+
+from app import db
+from app import models
 
 
 class MyStreamListener(tweepy.StreamListener):

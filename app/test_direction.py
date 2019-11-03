@@ -13,16 +13,13 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 #
-
 """Tests for the directions module."""
-
+import time
 from datetime import datetime
 from datetime import timedelta
-import time
-
-import responses
 
 import googlemaps
+import responses
 
 
 # class DirectionsTest(_test.TestCase):

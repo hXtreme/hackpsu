@@ -1,6 +1,8 @@
-from twitter.MyStreamListener import MyStreamListener
-import tweepy
 from threading import Thread
+
+import tweepy
+
+from twitter.MyStreamListener import MyStreamListener
 
 
 class TwitterWorker(Thread):

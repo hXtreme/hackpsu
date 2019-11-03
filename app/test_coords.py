@@ -1,5 +1,6 @@
-import googlemaps
 from datetime import datetime
+
+import googlemaps
 
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
