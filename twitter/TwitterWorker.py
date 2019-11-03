@@ -1,4 +1,4 @@
-from app.MyStreamListener import MyStreamListener
+from twitter.MyStreamListener import MyStreamListener
 import tweepy
 from threading import Thread
 

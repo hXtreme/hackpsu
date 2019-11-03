@@ -1,6 +1,6 @@
 from flask.ext.script import Manager, prompt_bool, Shell, Server
 from termcolor import colored
-from app.TwitterWorker import *
+from twitter.TwitterWorker import *
 from app import app, db, models
 import sys
 
