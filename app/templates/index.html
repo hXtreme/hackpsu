@@ -13,4 +13,29 @@
 
     {{ m.map() }}
 
+    <script type="text/javascript">
+
+    function refresh_requesters() {
+        $.ajax({
+            type: 'POST',
+            async: true,
+            url: '/api/getInNeedRequester'
+        }).done(function (response) {
+            console.log(response);
+            var requesters = response.requesters;
+            if (requesters.length > 0) {
+                clearMarkers();
+            }
+            for (var requester in requesters) {
+                placeMarker(map, requester);
+            }
+        })
+    }
+
+    window.setInterval(function(){
+        refresh_requesters();
+    }, 10000);
+    refresh_requesters();
+    </script>
+
 {% endblock %}
