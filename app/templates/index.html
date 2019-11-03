@@ -1,15 +1,16 @@
 {% extends "layout.html" %}
+{% import "macros.html" as m %}
 
 {% block head %}
     {{ super() }}
+    <!-- Leaflet JS -->
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
+    <!-- Leaflet CSS -->
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet'/>
 {% endblock %}
 
 {% block content %}
 
-	<h1 class="ui header">{{ title }}</h1>
-
-	{% if current_user.is_authenticated %}
-	  	<h2 class="ui header">Hi {{ current_user.first_name }}!</h2>
-	{% endif %}
+    {{ m.map() }}
 
 {% endblock %}

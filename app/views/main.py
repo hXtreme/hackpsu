@@ -6,8 +6,12 @@ import random
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('map.html', title='Map')
+    return render_template('index.html', title='Map')
 
+
+@app.route('/nav')
+def nav():
+    return render_template('nav.html', title='Navigation')
 
 @app.route('/map/refresh', methods=['POST'])
 def map_refresh():
