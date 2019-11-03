@@ -12,30 +12,25 @@
 {% block content %}
 
     {{ m.map() }}
+    console.log("Test")
+    <script type="text/javascript">
+         fetch('/api/getInNeedRequester')
+          .then((resp) => resp.json()) // Transform the data into json
+          .then(function(data) {
+                console.log(data);
+                for (var req in data){
+                    placeMarker(map, req);
+                }
+            }).catch(function(error) {
+            console.log(error);
+          });
+
+    </script>
 
     <script type="text/javascript">
-
-    function refresh_requesters() {
-        $.ajax({
-            type: 'POST',
-            async: true,
-            url: '/api/getInNeedRequester'
-        }).done(function (response) {
-            console.log(response);
-            var requesters = response.requesters;
-            if (requesters.length > 0) {
-                clearMarkers();
-            }
-            for (var requester in requesters) {
-                placeMarker(map, requester);
-            }
-        })
-    }
-
-    window.setInterval(function(){
-        refresh_requesters();
-    }, 10000);
-    refresh_requesters();
-    </script>
+          setTimeout(function(){
+            location = ''
+          },30000)
+     </script>
 
 {% endblock %}
