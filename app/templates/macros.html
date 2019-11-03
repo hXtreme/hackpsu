@@ -26,3 +26,40 @@
     	</ul>
   	{% endif %}
 {% endmacro %}
+
+<!-- Add a styled map to the page -->
+{% macro map() %}
+    <div id="map" style="height: 91vh; width: 100vw;"></div>
+
+    <script src="static/js/map-style.js"></script>
+
+    <script type="text/javascript">
+        var map;
+
+        function initMap() {
+            const styledMapType = new google.maps.StyledMapType(
+                map_style,
+                { name: 'Map'}
+                );
+
+            const mapElem = document.getElementById('map');
+            map = new google.maps.Map(
+                mapElem,
+                {
+                    center: {lat: 40.0, lng: -75.0},
+                    zoom: 12,
+                    mapTypeControlOptions: {
+                        mapTypeIds: ['Map']
+                    }
+                }
+            );
+            map.mapTypes.set('Map', styledMapType);
+            map.setMapTypeId('Map');
+        }
+    </script>
+
+    {#  Google Maps API  #}
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKRd5kn3yHGCja-ao7mQcmwHBbvdgvyTM&callback=initMap&libraries=geometry">
+    </script>
+{% endmacro %}
