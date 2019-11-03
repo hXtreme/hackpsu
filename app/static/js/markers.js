@@ -46,6 +46,8 @@ function getInfoWindow(person) {
 
 function respond() {
 
+// TODO
+// Change the persons status to serviced - delete from queue
 
 
 }
