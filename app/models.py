@@ -4,11 +4,23 @@ from flask.ext.login import UserMixin
 from app import db, bcrypt
 
 
-class User(db.Model, UserMixin):
+class Requesters(db.Model, UserMixin):
 
-    ''' A user who has an account on the website. '''
+    ''' A requesters who needs help '''
 
-    __tablename__ = 'users'
+    __tablename__ = 'requesters'
+
+    user_name = db.Column(db.String, primary_key=True)
+    lat = db.Column(db.Float)
+    lng = db.Column(db.Float)
+    message = db.Column(db.String)
+
+
+class Responder(db.Model, UserMixin):
+
+    ''' A responder who has an account on the website. '''
+
+    __tablename__ = 'responders'
 
     first_name = db.Column(db.String)
     last_name = db.Column(db.String)
