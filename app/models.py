@@ -6,14 +6,15 @@ from app import db, bcrypt
 
 class Requesters(db.Model, UserMixin):
 
-    ''' A requesters who needs help '''
+    ''' A requester who needs help '''
 
     __tablename__ = 'requesters'
 
-    user_name = db.Column(db.String, primary_key=True)
+    username = db.Column(db.String, primary_key=True)
     lat = db.Column(db.Float)
     lng = db.Column(db.Float)
     message = db.Column(db.String)
+    radius = db.Column(db.Float)
 
 
 class Responder(db.Model, UserMixin):
@@ -46,4 +47,3 @@ class Responder(db.Model, UserMixin):
 
     def get_id(self):
         return self.email
-
