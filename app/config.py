@@ -1,1 +1,1 @@
-config_dev.py
+config_prod.py
