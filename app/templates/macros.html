@@ -46,7 +46,7 @@
             map = new google.maps.Map(
                 mapElem,
                 {
-                    center: getPosition(),
+                    center: new google.maps.LatLng(0, 0),
                     zoom: 12,
                     mapTypeControlOptions: {
                         mapTypeIds: ['Map']
@@ -55,6 +55,7 @@
             );
             map.mapTypes.set('Map', styledMapType);
             map.setMapTypeId('Map');
+            navigator.geolocation.getCurrentPosition(centerMap)
         }
     </script>
 
